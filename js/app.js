@@ -1,59 +1,80 @@
+// input income and expense common funtion
+function inputAmout(inputDec) {
+  const inputMoney = document.getElementById(inputDec);
+  const inputMoneyText = inputMoney.value;
+  const inputMoneyNum = parseFloat(inputMoneyText);
+  return inputMoneyNum;
+}
+
 document.getElementById("expense_Cal").addEventListener("click", function () {
-  //   console.log("i'm clickd");
-  // Get monthly Income
-  const monthlyIncome = document.getElementById("monthly_Incom");
-  const monthlyIncomeText = monthlyIncome.value;
-  const monthlyIncomeN = parseFloat(monthlyIncomeText);
+  // Get monthly Income function
+  const monthlyIncomeN = inputAmout("monthly_Incom");
 
   //Get Food Expense input
-  const foodExp = document.getElementById("food_Exp");
-  const foodExpText = foodExp.value;
-  const foodExpNum = parseFloat(foodExpText);
-  //   console.log(foodExpNum);
+  const foodExpNum = inputAmout("food_Exp");
 
   //Get Rent Expense input
-  const rentExp = document.getElementById("rent_Exp");
-  const rentExpText = rentExp.value;
-  const rentExpNum = parseFloat(rentExpText);
-  //   console.log(rentExpNum);
+  const rentExpNum = inputAmout("rent_Exp");
+
   //Get Cloth Expense Input
-  const clothsExp = document.getElementById("cloths_Exp");
-  const clothsExpText = clothsExp.value;
-  const clothsExpNum = parseFloat(clothsExpText);
-  //   console.log(clothsExpNum);
+  const clothsExpNum = inputAmout("cloths_Exp");
 
-  // Set total expense
-  const totalExp = document.getElementById("total_Exp");
-  const totalExpText = totalExp.innerText;
-  const totalExpNum = foodExpNum + rentExpNum + clothsExpNum;
-  totalExp.innerText = totalExpNum;
+  //error mge
+  const errorMassg = document.getElementById("msg_Error");
+  if (
+    monthlyIncomeN > 0 &&
+    foodExpNum > 0 &&
+    rentExpNum > 0 &&
+    clothsExpNum > 0
+  ) {
+    errorMassg.style.display = "none";
+    //Set total expense
+    const totalExp = document.getElementById("total_Exp");
+    const totalExpText = totalExp.innerText;
+    const totalExpNum = foodExpNum + rentExpNum + clothsExpNum;
+    totalExp.innerText = totalExpNum;
+    const enoufgMoney = document.getElementById("enough_Money");
 
-  //primary remaing blance
-  const balance = document.getElementById("balance");
-  const totalBalance = balance.innerText;
-  balance.innerText = monthlyIncomeN - totalExpNum;
+    if (totalExpNum > monthlyIncomeN) {
+      enoufgMoney.style.display = "block";
+      balance.innerText = "";
+    } else {
+      enoufgMoney.style.display = "none";
+      const balance = document.getElementById("balance");
+      const totalBalance = balance.innerText;
+      balance.innerText = monthlyIncomeN - totalExpNum;
+    }
+
+    // // primary remaing blance
+    // const balance = document.getElementById("balance");
+    // const totalBalance = balance.innerText;
+    // balance.innerText = monthlyIncomeN - totalExpNum;
+  } else {
+    errorMassg.style.display = "block";
+  }
 });
 
 document.getElementById("saving_Cal").addEventListener("click", function () {
-  //get saving persectage
-  const savingPercent = document.getElementById("saving_percent");
-  const savingPercentText = savingPercent.value;
-  const savingPercentNum = parseFloat(savingPercentText);
+  //total amount
+  const balanceNum = inputAmout("monthly_Incom");
 
-  //get remaing balanc after expense;
-  const balance = document.getElementById("balance");
-  const balanceText = balance.innerText;
-  const balanceNum = parseFloat(balanceText);
+  //get saving persectage
+  const savingPercentNum = inputAmout("saving_percent");
+
   const savingAmountCal = (balanceNum / 100) * savingPercentNum;
 
   // Calculation saving amount
   const savingAmount = document.getElementById("saving_Amount");
   const savingAmountText = savingAmount.innerText;
   const savingAmountNum = parseFloat(savingAmountText);
-  console.log(savingAmountNum);
   savingAmount.innerText = savingAmountCal;
+
+  //get remaing balanc after expense;
+  const balance = document.getElementById("balance");
+  const balanceText = balance.innerText;
+  const remaingBalanceNum = parseFloat(balanceText);
 
   // Remaing balance after saving calculation;
   const remaing_Balance = document.getElementById("ramaing_Balance");
-  remaing_Balance.innerText = balanceNum - savingAmountNum;
+  remaing_Balance.innerText = remaingBalanceNum - savingAmountNum;
 });
