@@ -1,0 +1,10 @@
+.inputBox {
+  background-color: #dddadaa3;
+  width: 220px;
+  height: 34px;
+  border: 1px solid;
+  border-radius: 3px;
+}
+.saveInput {
+  width: 80px;
+}
