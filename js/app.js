@@ -33,3 +33,27 @@ document.getElementById("expense_Cal").addEventListener("click", function () {
   const totalBalance = balance.innerText;
   balance.innerText = monthlyIncomeN - totalExpNum;
 });
+
+document.getElementById("saving_Cal").addEventListener("click", function () {
+  //get saving persectage
+  const savingPercent = document.getElementById("saving_percent");
+  const savingPercentText = savingPercent.value;
+  const savingPercentNum = parseFloat(savingPercentText);
+
+  //get remaing balanc after expense;
+  const balance = document.getElementById("balance");
+  const balanceText = balance.innerText;
+  const balanceNum = parseFloat(balanceText);
+  const savingAmountCal = (balanceNum / 100) * savingPercentNum;
+
+  // Calculation saving amount
+  const savingAmount = document.getElementById("saving_Amount");
+  const savingAmountText = savingAmount.innerText;
+  const savingAmountNum = parseFloat(savingAmountText);
+  console.log(savingAmountNum);
+  savingAmount.innerText = savingAmountCal;
+
+  // Remaing balance after saving calculation;
+  const remaing_Balance = document.getElementById("ramaing_Balance");
+  remaing_Balance.innerText = balanceNum - savingAmountNum;
+});

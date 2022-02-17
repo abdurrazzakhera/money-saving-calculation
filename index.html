@@ -41,7 +41,7 @@
                   class="d-flex justify-content-center align-items-center m-2"
                 >
                   <p class="me-3">income :</p>
-                  <input id="monthly_Incom" class="inputBox" type="text" name="" id="" value="1000" />
+                  <input id="monthly_Incom" class="inputBox" type="text" name="" id="" value="" />
                 </div>
 
                 <!-- Expenses input section -->
@@ -50,19 +50,19 @@
                   class="d-flex justify-content-center align-items-center m-2"
                 >
                   <p class="me-3">Food :</p>
-                  <input id="food_Exp" class="inputBox" type="text" name="" value="3000"  />
+                  <input id="food_Exp" class="inputBox" type="text" name="" value=""  />
                 </div>
                 <div
                   class="d-flex justify-content-center align-items-center m-2"
                 >
                   <p class="me-3">Rent :</p>
-                  <input id="rent_Exp" class="inputBox" type="text" name="" value="2000" />
+                  <input id="rent_Exp" class="inputBox" type="text" name="" value="" />
                 </div>
                 <div
                   class="d-flex justify-content-center align-items-center m-2"
                 >
                   <p class="me-3">Clothes :</p>
-                  <input id="cloths_Exp" class="inputBox" type="text" name="" value="500" />
+                  <input id="cloths_Exp" class="inputBox" type="text" name="" value="" />
                 </div>
                 <div class="text-center">
                   <button id="expense_Cal" class="btn btn-primary">Calculate</button>
@@ -70,26 +70,26 @@
 
                 <!-- Calcution result section -->
                 <div class="mt-2 text-center">
-                  <h4 class="">Total Expenses : <span id="total_Exp">5500</span></h4>
+                  <h4 class="">Total Expenses : <span id="total_Exp"></span></h4>
                 </div>
                 <div class="text-center">
-                  <h4 class="">balance : <span id="balance">4500</span></h4>
+                  <h4 class="">balance : <span id="balance"></span></h4>
                 </div>
 
                 <!-- Saving calculation section -->
                 <div class="d-flex justify-content-center align-items-center">
                   <span class="me-2">save:</span class="me-2">
-                  <input class=" me-2 inputBox saveInput" type="text" value="20" />
+                  <input id="saving_percent" class=" me-2 inputBox saveInput" type="text" value="20" />
                   <span class="me-2">%</span>
-                  <button class="btn btn-primary">save</button>
+                  <button id="saving_Cal" class="btn btn-primary">save</button>
                 </div>
 
                 <!-- Calculation resutl after saving -->
                 <div class="mt-2 text-center">
-                    <h4 class="">Saving Amount: <span>5500</span></h4>
+                    <h4 class="">Saving Amount: <span id="saving_Amount"></span></h4>
                   </div>
                   <div class="text-center">
-                    <h4 class="">Remaing balance : <span>4500</span></h4>
+                    <h4 class="">Remaing balance : <span id="ramaing_Balance"></span></h4>
                   </div>
               </div>
             </div>
