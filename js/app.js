@@ -30,7 +30,7 @@ document.getElementById("expense_Cal").addEventListener("click", function () {
     errorMassg.style.display = "none";
     //Set total expense
     const totalExp = document.getElementById("total_Exp");
-    const totalExpText = totalExp.innerText;
+    // const totalExpText = totalExp.innerText;
     const totalExpNum = foodExpNum + rentExpNum + clothsExpNum;
     totalExp.innerText = totalExpNum;
     const enoufgMoney = document.getElementById("enough_Money");
@@ -41,14 +41,9 @@ document.getElementById("expense_Cal").addEventListener("click", function () {
     } else {
       enoufgMoney.style.display = "none";
       const balance = document.getElementById("balance");
-      const totalBalance = balance.innerText;
+      // const totalBalance = balance.innerText;
       balance.innerText = monthlyIncomeN - totalExpNum;
     }
-
-    // // primary remaing blance
-    // const balance = document.getElementById("balance");
-    // const totalBalance = balance.innerText;
-    // balance.innerText = monthlyIncomeN - totalExpNum;
   } else {
     errorMassg.style.display = "block";
   }
@@ -65,8 +60,6 @@ document.getElementById("saving_Cal").addEventListener("click", function () {
 
   // Calculation saving amount
   const savingAmount = document.getElementById("saving_Amount");
-  const savingAmountText = savingAmount.innerText;
-  const savingAmountNum = parseFloat(savingAmountText);
   savingAmount.innerText = savingAmountCal;
 
   //get remaing balanc after expense;
@@ -74,7 +67,20 @@ document.getElementById("saving_Cal").addEventListener("click", function () {
   const balanceText = balance.innerText;
   const remaingBalanceNum = parseFloat(balanceText);
 
-  // Remaing balance after saving calculation;
+  //remaing balance after saving
   const remaing_Balance = document.getElementById("ramaing_Balance");
-  remaing_Balance.innerText = remaingBalanceNum - savingAmountNum;
+
+  //error saving money
+  const saving_Error = document.getElementById("remaing_save");
+
+  //if remainng balance ar low than saving amount
+  if (savingAmount.innerText > remaingBalanceNum) {
+    console.log("you have no ramaing balance");
+    saving_Error.style.display = "block";
+    savingAmount.innerText = "";
+    remaing_Balance.innerText = " ";
+  } else {
+    saving_Error.style.display = "none";
+    remaing_Balance.innerText = remaingBalanceNum - savingAmountCal;
+  }
 });
